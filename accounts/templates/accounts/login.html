@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Request System</title>
+    <link rel="stylesheet" href="{% static 'accounts/login.css' %}">
+</head>
+<body>
+    <main class="login-page">
+        <section class="login-card">
+            <div class="login-header">
+                <div class="brand-mark">ShAN</div>
+
+                <div class="brand-copy">
+                    <h1>Welcome back</h1>
+                    <p>Sign in to continue to the request system.</p>
+                </div>
+            </div>
+
+            <form method="post" class="login-form">
+                {% csrf_token %}
+
+                <div class="field-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" name="username" autocomplete="username" required>
+                </div>
+
+                <div class="field-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" autocomplete="current-password" required>
+                </div>
+
+                <button type="submit" class="submit-button">Sign in</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
