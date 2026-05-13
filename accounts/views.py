@@ -25,7 +25,7 @@ class LoginView(generic.TemplateView):
             login(request, user)
             return redirect("admin:index")
         else:
-            return render(request, self.template_name, {"error": "Invalid username or password."})
+            return render(request, self.template_name, {"error_message": "Invalid username or password."})
 
 def register_user(request):
     return HttpResponse("User registration page")
