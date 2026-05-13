@@ -36,7 +36,10 @@
                     <div class="error-message">{{ error_message }}</div>
                 {% endif %}
                 <button type="submit" class="submit-button">Sign in</button>
-                <a href="{% url 'accounts:register' %}">New user</a>
+                <div class="register-link">
+                    new users ->
+                <a href="{% url 'accounts:register' %}">Register</a>
+                </div>
 
             </form>
         </section>
