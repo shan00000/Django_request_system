@@ -38,6 +38,12 @@
                 <input id="username" type="text" name="username" autocomplete="username" required>
             </div>
 
+            {% if error_username %}
+                <div class="error-message">
+                    {{ error_username }}
+                </div>
+            {% endif %}
+
             <div class="field-group">
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password" autocomplete="new-password" required>
