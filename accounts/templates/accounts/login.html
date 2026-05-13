@@ -32,8 +32,12 @@
                     <label for="password">Password</label>
                     <input id="password" type="password" name="password" autocomplete="current-password" required>
                 </div>
-
+                {% if error_message %}
+                    <div class="error-message">{{ error_message }}</div>
+                {% endif %}
                 <button type="submit" class="submit-button">Sign in</button>
+                <a href="{% url 'accounts:register' %}">New user</a>
+
             </form>
         </section>
     </main>
