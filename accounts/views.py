@@ -28,4 +28,4 @@ class LoginView(generic.TemplateView):
             return render(request, self.template_name, {"error_message": "Invalid username or password."})
 
 def register_user(request):
-    return HttpResponse("User registration page")
+    return render(request, "accounts/register.html")

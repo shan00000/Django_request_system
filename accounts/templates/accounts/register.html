@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Request System</title>
+    <link rel="stylesheet" href="{% static 'accounts/register.css' %}">
+</head>
+
+<body>
+    <main class="register-page">
+        <form method="post" class="register-form">
+            {% csrf_token %}
+
+            <div class="form-header">
+                <div class="brand-mark">RS</div>
+
+                <div>
+                    <h1>Register</h1>
+                    <p>Create your request system account.</p>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label for="first_name">First Name</label>
+                <input id="first_name" type="text" name="first_name" autocomplete="given-name" required>
+            </div>
+
+            <div class="field-group">
+                <label for="last_name">Last Name</label>
+                <input id="last_name" type="text" name="last_name" autocomplete="family-name" required>
+            </div>
+
+            <div class="field-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" name="username" autocomplete="username" required>
+            </div>
+
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" autocomplete="new-password" required>
+            </div>
+
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" autocomplete="email" required>
+            </div>
+
+            <div class="field-group">
+                <label for="department">Department</label>
+                <input id="department" type="text" name="department" autocomplete="organization" required>
+            </div>
+
+            {% if error_message %}
+                <div class="error-message">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+
+            {% if submission_message %}
+                <div class="success-message">
+                    {{ submission_message }}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="submit-button">
+                Register
+            </button>
+
+            <div class="login-link">
+                Already have an account?
+                <a href="{% url 'accounts:login' %}">Sign in</a>
+            </div>
+
+        </form>
+    </main>
+</body>
+</html>
