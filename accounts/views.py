@@ -31,7 +31,7 @@ class LoginView(generic.TemplateView):
             return redirect("admin:index")
         else:
             login(request, user)
-            return HttpResponse("Login successful. You can now submit requests.")
+            return redirect("requests:dashboard")
 
 
         # if user is not None:

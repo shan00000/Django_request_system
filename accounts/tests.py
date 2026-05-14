@@ -1,5 +1,4 @@
 from django.test import TestCase
-from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import UserProfile
@@ -21,7 +20,7 @@ class AccountRegistrationTests(TestCase):
     def test_user_can_register(self):
         response = self.client.post(reverse("accounts:register"), {
             "first_name": "Shan",
-            "last_name": "Rathnayake",
+            "last_name": "Rath",
             "username": "shan",
             "password": "testpassword123",
             "email": "shan@example.com",
@@ -35,7 +34,7 @@ class AccountRegistrationTests(TestCase):
 
         self.assertEqual(user.email, "shan@example.com")
         self.assertEqual(user.first_name, "Shan")
-        self.assertEqual(user.last_name, "Rathnayake")
+        self.assertEqual(user.last_name, "Rath")
         self.assertEqual(profile.department, "cs")
         self.assertEqual(profile.role, "academic")
         self.assertFalse(profile.is_approved)
