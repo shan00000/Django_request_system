@@ -10,20 +10,10 @@
 </head>
 <body>
     <main class="login-page">
-        <section class="login-card">
-            <div class="login-header">
-                <div class="brand-mark">ShAN</div>
-
-                <div class="brand-copy">
-                    <h1>Request System <br> UNI of UNI</h1>
-                    <p>Sign in to continue to the request system.</p>
-                </div>
-            </div>
-
+       
             <form method="post" class="login-form">
                 {% csrf_token %}
 
-                <div class="field-group">
                     <label for="username">Username</label>
                     <input id="username" type="text" name="username" autocomplete="username" required>
                 </div>

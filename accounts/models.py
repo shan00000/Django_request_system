@@ -8,6 +8,11 @@ class UserProfile(models.Model):
         ("academic","Academic"),
         ("cms_it","CMS IT")
     ]
+    DEPARTMENT_CHOICES = [
+    ("cs", "Computer Science"),
+    ("math", "Mathematics"),
+    ("other", "Other"),
+    ]
 
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -21,7 +26,7 @@ class UserProfile(models.Model):
     )
 
     is_approved = models.BooleanField(default=False)
-    department = models.CharField(max_length=100, blank=True)
+    department = models.CharField(max_length=50,choices=DEPARTMENT_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

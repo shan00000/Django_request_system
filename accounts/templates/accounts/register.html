@@ -15,7 +15,7 @@
             {% csrf_token %}
 
             <div class="form-header">
-                <div class="brand-mark">RS</div>
+                <div class="brand-mark">ShAn</div>
 
                 <div>
                     <h1>Register</h1>
@@ -39,9 +39,7 @@
             </div>
 
             {% if error_username %}
-                <div class="error-message">
-                    {{ error_username }}
-                </div>
+                <div class="error-message">{{ error_username }}</div>
             {% endif %}
 
             <div class="field-group">
@@ -54,20 +52,26 @@
                 <input id="email" type="email" name="email" autocomplete="email" required>
             </div>
 
+            {% if error_email %}
+                <div class="error-message">{{ error_email }}</div>
+            {% endif %}
+
             <div class="field-group">
                 <label for="department">Department</label>
-                <input id="department" type="text" name="department" autocomplete="organization" required>
+                <select id="department" name="department" autocomplete="organization" required>
+                    <option value="">Select department</option>
+                    <option value="cs">cs</option> 
+                    <option value="math">math</option> 
+                    <option value="other">other</option>
+                </select>
             </div>
-
-            {% if error_message %}
-                <div class="error-message">
-                    {{ error_message }}
-                </div>
-            {% endif %}
 
             {% if submission_message %}
                 <div class="success-message">
                     {{ submission_message }}
+                    <a class="secondary-button" href="{% url 'accounts:login' %}">
+                        Go to Login
+                    </a>
                 </div>
             {% endif %}
 
@@ -79,7 +83,6 @@
                 Already have an account?
                 <a href="{% url 'accounts:login' %}">Sign in</a>
             </div>
-
         </form>
     </main>
 </body>
