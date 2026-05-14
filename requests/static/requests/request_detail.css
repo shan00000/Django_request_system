@@ -68,7 +68,6 @@ body {
 
 .detail-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.2rem;
 }
 
@@ -77,6 +76,10 @@ body {
     border: 1px solid var(--border);
     border-radius: 18px;
     background: #f8fbff;
+}
+
+.detail-item.wide {
+    grid-column: 1 / -1;
 }
 
 .detail-item h3 {
