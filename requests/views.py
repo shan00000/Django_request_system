@@ -36,7 +36,14 @@ class DashboardView(LoginRequiredMixin, generic.TemplateView):
 
         return context
 
+class RequestDetailView(LoginRequiredMixin, generic.DetailView):
+    model = SoftwareRequest
+    template_name = "requests/request_detail.html"
+    context_object_name = "software_request"
 
+    def get_queryset(self):
+        return SoftwareRequest.objects.filter(requested_by=self.request.user)
+    
 def logout_view(request):
     logout(request)
     return redirect("accounts:login")

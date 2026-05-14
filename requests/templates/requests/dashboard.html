@@ -56,7 +56,10 @@
 
             <tbody>
                 {% for software_request in software_requests %}
-                    <tr onclick="window.location.href='#'">
+                    <tr 
+                        onclick="window.location.href='{% url 'requests:request_detail' software_request.pk %}';"
+                        class="clickable-row"
+                            >
                         <td>{{ software_request.application_name }}</td>
                         <td>{{ software_request.created_at|date:"d M Y" }}</td>
                         <td>{{ software_request.need_installing_on }}</td>

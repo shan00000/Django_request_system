@@ -1,0 +1,137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ software_request.application_name }} | Request Detail</title>
+
+    <link rel="stylesheet" href="{% static 'requests/request_detail.css' %}">
+</head>
+
+<body>
+
+    <main class="detail-page">
+
+        <section class="detail-card">
+
+            <div class="detail-header">
+                <div>
+                    <p class="eyebrow">Software Request</p>
+                    <h1>{{ software_request.application_name }}</h1>
+                </div>
+
+                <span class="status-badge">
+                    {{ software_request.get_status_display }}
+                </span>
+            </div>
+
+            <div class="detail-grid">
+
+                <div class="detail-item">
+                    <h3>Application Description</h3>
+                    <p>{{ software_request.application_description }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Application Website</h3>
+
+                    {% if software_request.application_website %}
+                        <a href="{{ software_request.application_website }}" target="_blank">
+                            {{ software_request.application_website }}
+                        </a>
+                    {% else %}
+                        <p>No website provided.</p>
+                    {% endif %}
+                </div>
+
+                <div class="detail-item">
+                    <h3>Purchase Required</h3>
+                    <p>{{ software_request.purchase_required }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Need Virtual Desktop</h3>
+                    <p>{{ software_request.need_virtual_desktop }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Alternative Software Considered</h3>
+                    <p>{{ software_request.alternative_software_has_been_considered }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>License Agreement Detail</h3>
+                    <p>{{ software_request.license_agreement_detail }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Privacy Considered</h3>
+                    <p>{{ software_request.privacy_considered }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Primary Use</h3>
+                    <p>{{ software_request.primary_use }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Need Installing On</h3>
+                    <p>{{ software_request.need_installing_on }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Need Staff Machine</h3>
+                    <p>{{ software_request.need_staff_machine }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Anything Else</h3>
+                    <p>{{ software_request.anything_else }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Start Date</h3>
+                    <p>{{ software_request.start_date }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Ticket Number</h3>
+                    <p>{{ software_request.ticket_number }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Requested By</h3>
+                    <p>{{ software_request.requested_by.username }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Created At</h3>
+                    <p>{{ software_request.created_at }}</p>
+                </div>
+
+                <div class="detail-item">
+                    <h3>Updated At</h3>
+                    <p>{{ software_request.updated_at }}</p>
+                </div>
+
+            </div>
+
+            <div class="button-group">
+
+                <a href="#" class="edit-button">
+                    Edit Request
+                </a>
+
+                <a href="{% url 'requests:dashboard' %}" class="back-button">
+                    Back to Dashboard
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
