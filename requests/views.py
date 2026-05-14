@@ -43,6 +43,7 @@ class RequestDetailView(LoginRequiredMixin, generic.DetailView):
 
     def get_queryset(self):
         return SoftwareRequest.objects.filter(requested_by=self.request.user)
+
     
 def logout_view(request):
     logout(request)
