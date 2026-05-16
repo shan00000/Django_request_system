@@ -118,13 +118,17 @@
             </div>
 
             <div class="button-group">
+                {% if can_edit %}
+                    <a href="{% url 'requests:edit_request' software_request.pk %}" class="edit-button">
+                        Edit Request
+                    </a>
+                {% endif %}
 
-                <a href="#" class="edit-button">
-                    Edit Request
-                </a>
-                <a href="#" class="edit-button">
-                    renew Request
-                </a>
+                {% if active_cycle %}
+                    <a href="{% url 'requests:renew_request' software_request.pk %}" class="renew-button">
+                        Renew Request
+                    </a>
+                {% endif %}
 
                 <a href="{% url 'requests:dashboard' %}" class="back-button">
                     Back to Dashboard
