@@ -86,7 +86,7 @@ db.sqlite3
 ## Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/shan00000/Django_request_system
 cd <project-folder>
 ```
 
