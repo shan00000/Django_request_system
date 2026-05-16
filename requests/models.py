@@ -3,6 +3,16 @@ from django.conf import settings
 
 # Create your models here.
 
+class RequestCycle(models.Model):
+    year = models.CharField(max_length=20)
+    is_active = models.BooleanField(default=False)
+    opens_at = models.DateField()
+    closes_at = models.DateField()
+
+    def __str__(self):
+        return f"{self.year} - {'Active' if self.is_active else 'Closed'}"
+
+
 class SoftwareRequest(models.Model):
     STATUS_CHOICES = [
         ("submitted", "Submitted"),
@@ -40,7 +50,7 @@ class SoftwareRequest(models.Model):
         default="submitted"
     )
 
-    ticket_number = models.CharField(max_length=100, unique=True, blank=True)
+    ticket_number = models.CharField(max_length=100,unique=True,blank=True,null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

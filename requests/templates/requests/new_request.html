@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Request | Request System</title>
+
+    <link rel="stylesheet" href="{% static 'requests/new_request.css' %}">
+</head>
+
+<body>
+
+    <main class="page-wrapper">
+
+        <form method="post" class="new-request-form">
+            {% csrf_token %}
+
+            <div class="form-header">
+                <div>
+                    <p class="eyebrow">Request System</p>
+                    <h1>New Software Request</h1>
+                </div>
+            </div>
+
+            {% if active_cycle %}
+
+                <div class="field-group">
+                    <label for="application_name">Application Name</label>
+                    <input id="application_name" type="text" name="application_name" required>
+                </div>
+
+                <div class="field-group wide">
+                    <label for="application_description">Application Description</label>
+                    <textarea id="application_description" name="application_description" rows="5" required></textarea>
+                </div>
+
+                <div class="field-group">
+                    <label for="application_website">Application Website</label>
+                    <input id="application_website" type="url" name="application_website" required>
+                </div>
+
+                <div class="checkbox-grid">
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="purchase_required">
+                        <span>Purchase Required</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="need_virtual_desktop">
+                        <span>Need Virtual Desktop</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="alternative_software_has_been_considered">
+                        <span>Alternative Software Considered</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="privacy_considered">
+                        <span>Privacy Considered</span>
+                    </label>
+
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="need_staff_machine">
+                        <span>Need Staff Machine</span>
+                    </label>
+
+                </div>
+
+                <div class="field-group wide">
+                    <label for="license_agreement_detail">License Agreement Details</label>
+                    <textarea id="license_agreement_detail" name="license_agreement_detail" rows="4" required></textarea>
+                </div>
+
+                <div class="field-group">
+                    <label for="primary_use">Primary Use</label>
+                    <input id="primary_use" type="text" name="primary_use" required>
+                </div>
+
+                <div class="field-group wide">
+                    <label for="need_installing_on">Need Installing On</label>
+                    <textarea id="need_installing_on" name="need_installing_on" rows="4" required></textarea>
+                </div>
+
+                <div class="field-group wide">
+                    <label for="anything_else">Anything Else?</label>
+                    <textarea id="anything_else" name="anything_else" rows="4" required></textarea>
+                </div>
+
+                <div class="field-group">
+                    <label for="start_date">Requested Start Date</label>
+                    <input id="start_date" type="date" name="start_date" required>
+                </div>
+
+                <div class="button-row">
+                    <button type="submit" class="submit-button">
+                        Submit Request
+                    </button>
+
+                    <a href="{% url 'requests:dashboard' %}" class="secondary-button">
+                        Cancel
+                    </a>
+                </div>
+
+            {% else %}
+
+                <div class="closed-message">
+                    Request period is currently closed.
+                </div>
+
+            {% endif %}
+
+        </form>
+
+    </main>
+
+</body>
+</html>
