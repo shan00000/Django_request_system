@@ -30,7 +30,7 @@ class DashboardView(LoginRequiredMixin, generic.TemplateView):
 
         if selected_year:
             software_requests = software_requests.filter(
-                start_date__year=selected_year
+                created_at__year=selected_year
             )
 
         context["software_requests"] = software_requests
